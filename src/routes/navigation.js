@@ -2,7 +2,8 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
 import Home from "../pages/home";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import InitialPage from "../pages/InitialPage";
+import InitialPage from "../pages/initialPage";
+import Atendimentos from "../pages/atendimentos";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -26,7 +27,12 @@ function DrawerRoutes(){
         }}>
             <Drawer.Screen name='Initial' component={InitialPage} options={{
                 headerTitle: 'Agendamentos'
-            }}/>
+            }} />
+
+            <Drawer.Screen name='Atendimento' component={Atendimentos} options={{
+                headerTitle: 'Atendimento'
+            }} />
+
         </Drawer.Navigator>
     )
 }
