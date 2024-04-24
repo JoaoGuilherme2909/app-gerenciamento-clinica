@@ -7,27 +7,33 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { clientes } from "../../mocks/clientes";
-import ItemCliente from "../../components/itemCliente";
+import { agendamentos } from "../../mocks/agendamentos";
+import Item from "../../components/item";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Clientes() {
+export default function Atendimentos() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <View style={styles.searchBox}>
-        <TextInput style={styles.input} placeholder="Buscar clientes" />
+        <TextInput style={styles.input} placeholder="Buscar atendimentos" />
         <TouchableOpacity style={styles.button}>
           <Ionicons name="search" size={24} color={"white"} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
-          <Ionicons name="person-add" size={24} color={"white"} />
+          <Ionicons name="add" size={24} color={"white"} />
         </TouchableOpacity>
       </View>
+
       <FlatList
-        data={clientes}
+        data={agendamentos}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ItemCliente id={item.id} nome={item.nome} cpf={item.CPF} />
+          <Item
+            id={item.id}
+            nome={item.cliente}
+            data={item.data}
+            hora={item.hora}
+          />
         )}
       />
     </SafeAreaView>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 2,
     margin: 8,
     borderRadius: 12,
-    padding: 5
+    padding: 5,
   },
   buttonAdd: {
     backgroundColor: "#E7B811",
