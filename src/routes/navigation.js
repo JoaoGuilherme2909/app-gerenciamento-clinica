@@ -1,16 +1,16 @@
-import { NavigationContainer } from "@react-navigation/native"
-import { createStackNavigator } from "@react-navigation/stack"
-import Home from "../pages/home";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import InitialPage from "../pages/initialPage";
-import Atendimentos from "../pages/atendimentos";
+import { Link, NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import Home from '../pages/home';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Agendamentos from '../pages/Agendamentos';
+import Clientes from '../pages/clientes';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function DrawerRoutes(){
     return (
-        <Drawer.Navigator screenOptions={{
+        <Drawer.Navigator initialRouteName='Agendamentos' screenOptions={{
             headerStyle:{
                 backgroundColor: '#E7B811',
                 
@@ -25,14 +25,13 @@ function DrawerRoutes(){
                 color: '#FFF'
             }
         }}>
-            <Drawer.Screen name='Initial' component={InitialPage} options={{
+            <Drawer.Screen name='Agendamentos' component={Agendamentos} options={{
                 headerTitle: 'Agendamentos'
             }} />
 
-            <Drawer.Screen name='Atendimento' component={Atendimentos} options={{
-                headerTitle: 'Atendimento'
+            <Drawer.Screen name='Clientes' component={Clientes} options={{
+                headerTitle: 'Clientes'
             }} />
-
         </Drawer.Navigator>
     )
 }
@@ -40,12 +39,12 @@ function DrawerRoutes(){
 export default function Navigation(){
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home" screenOptions={{
+            <Stack.Navigator initialRouteName='Home' screenOptions={{
                 headerShown: false,
-                headerTitle: ""
+                headerTitle: ''
             }}>
-                <Stack.Screen name="Home" component={Home}/>
-                <Stack.Screen name="Init" component={DrawerRoutes}/>
+                <Stack.Screen name='Home' component={Home}/>
+                <Stack.Screen name='Init' component={DrawerRoutes}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
